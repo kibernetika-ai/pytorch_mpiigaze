@@ -85,7 +85,6 @@ def init_hook(**params):
 def process(inputs, ctx, **kwargs):
     img, is_video = helpers.load_image(inputs, 'image', rgb=False)
     img = ctx.global_ctx.process(img)
-    img = img[:, :, ::-1]
     if not is_video:
         img = cv2.imencode('.jpg', img)[1].tostring()
     return {'output': img}
